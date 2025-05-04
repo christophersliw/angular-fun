@@ -10,26 +10,9 @@ import { NavbarService } from '../services/navbar.service';
   styleUrl: './navbar.component.scss',
   standalone: true
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
    private navbarService = inject(NavbarService);
 
-  menuItems = signal<any[]>([]);
-
-  ngOnInit(): void {
-
-     this.navbarService.getMenuItems().subscribe(items => {
-       this.menuItems.set(items);
-     });
-
-
-    // this.menuItems.set([
-    //   { name: 'Home', route: '/' },
-    //   { name: 'About', route: '/about' },
-    //   { name: 'Contact', route: '/contact' }
-    // ]);
-  }
-  constructor() {
-
-  }
+   menuItems = this.navbarService.menuItems;
 }
